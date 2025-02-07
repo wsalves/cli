@@ -1,27 +1,33 @@
 import process from 'process';
-import { _baseOptions, _underscoreOption } from '../core/yargs';
+import {
+  _baseOptions,
+  _underscoreOption,
+  _freezeTableNameOption,
+} from '../core/yargs';
 
 import helpers from '../helpers';
 import clc from 'cli-color';
 
 exports.builder = (yargs) =>
-  _underscoreOption(
-    _baseOptions(yargs)
-      .option('name', {
-        describe: 'Defines the name of the new model',
-        type: 'string',
-        demandOption: true,
-      })
-      .option('attributes', {
-        describe: 'A list of attributes',
-        type: 'string',
-        demandOption: true,
-      })
-      .option('force', {
-        describe: 'Forcefully re-creates model with the same name',
-        type: 'string',
-        demandOption: false,
-      })
+  _freezeTableNameOption(
+    _underscoreOption(
+      _baseOptions(yargs)
+        .option('name', {
+          describe: 'Defines the name of the new model',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('attributes', {
+          describe: 'A list of attributes',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('force', {
+          describe: 'Forcefully re-creates model with the same name',
+          type: 'string',
+          demandOption: false,
+        })
+    )
   ).argv;
 
 exports.handler = function (args) {

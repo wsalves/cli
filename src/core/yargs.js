@@ -69,3 +69,11 @@ export function _underscoreOption(yargs) {
     type: 'boolean',
   });
 }
+
+export function _freezeTableNameOption(yargs) {
+  return yargs.option('freezeTableName', {
+    describe: 'xxxxxxxxx',
+    default: false,
+    type: 'boolean',
+  });
+}
